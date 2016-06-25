@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Guitar Shop</title>
+    <link rel="stylesheet" href="./css/material.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/javascript.js"></script>
+    <script src="./js/material.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <body class="imgbody">
+    <section>
+      <div class="demo-layout-waterfall mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header mdl-layout__header--waterfall">
+          <!-- Top row, always visible -->
+          <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <div class="logo">
+              <a href="index.html"><img src="./img/logo.png" alt="logo" /></a>
+            </div>
+          </div>
+          <!-- Bottom row, not visible on scroll -->
+          <div class="mdl-layout__header-row">
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <nav class="mdl-navigation">
+              <a class="mdl-navigation__link" href="electricguitars.html">Electric Guitars</a>
+              <a class="mdl-navigation__link" href="acousticguitars.html">Acoustic Guitars</a>
+              <a class="mdl-navigation__link" href="ampguitars.html">Amps</a>
+              <a class="mdl-navigation__link" href="cabinetguitars.html">Cabinets</a>
+            </nav>
+          </div>
+        </header>
+        <div class="mdl-layout__drawer">
+          <div class="imguser">
+            <img src="./img/prs.jpg" alt="">
+          </div>
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Alendro Lopez</a>
+            <a class="mdl-navigation__link" href="">Account</a>
+            <a class="mdl-navigation__link" href="">Settings</a>
+            <a class="mdl-navigation__link" href="">SignOut</a>
+          </nav>
+        </div>
+        <main class="mdl-layout__content">
+        <div class="page-content"><!-- Your content goes here --></div>
+        </main>
+      </div>
+        <div class="divheader">
+          <h2 id="textheader">Electric Guitars</h2>
+        </div>
+        
+        <div class="div" id="divslide">
+          <div id="oculto">
+            <button type="button" name="button" id="ocultar"  onclick="carta(this)">Ocultar</button>
+          </div>
+        </div>
+        <div class="cardcontainer">
+          <div class="product-demo pod" >
+            <div class="demo-card-square mdl-card mdl-shadow--2dp card1" id="card1">
+              <div class="mdl-card__title  electricimg1 mdl-card--expand" >
+                <h2 class="mdl-card__title-text" >Prs McCarty 594</h2>
+              </div>
+              <div class="mdl-card__supporting-text" >
+                The 594 is the best new guitar I've played in years <br>
+                What good is an old guitar if you can't get all that feel out of the upper frets
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect " id="mostrar" id="card1" onclick="carta(this)">
+                  See More
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="demo-card-square mdl-card mdl-shadow--2dp card2">
+            <div class="mdl-card__title electricimg2 mdl-card--expand">
+              <h2 class="mdl-card__title-text">Schecter KM 7</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              Guitarist Keith Merrow has made a reputation for rhythms,
+              and he designed the KM-7 guitar
+              with Schecter to give him the eminent playability he needs.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"  >
+                See More
+              </a>
+            </div>
+          </div>
+          <div class="demo-card-square mdl-card mdl-shadow--2dp card3">
+            <div class="mdl-card__title electricimg3 mdl-card--expand">
+              <h2 class="mdl-card__title-text">Mayones Regius 7 MM FM</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              The Djentlemen Series is based on a Regius model,  <br>
+              which clear yet might sound perfectly matches the strict tonal criteria of this genre.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                See More
+              </a>
+            </div>
+          </div>
+          <div class="demo-card-square mdl-card mdl-shadow--2dp card4">
+            <div class="mdl-card__title electricimg4 mdl-card--expand">
+              <h2 class="mdl-card__title-text">LTD MH-417</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              The MH-417 is a monster 7-string metal machine that has all the high-performance features
+              you want, including a neck-thru-body design, Grover tuners,
+              a mahogany body finished in Black Satin.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                See More
+              </a>
+            </div>
+          </div>
+          <div class="demo-card-square mdl-card mdl-shadow--2dp card5">
+            <div class="mdl-card__title electricimg5 mdl-card--expand">
+              <h2 class="mdl-card__title-text">Etherial LM Kronos</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              Carbon fiber body with internal polyurathane core. This keeps the weight down as the carbon
+              fiber shell behaves like an exoskeletal structure as where the majarotiy of the strength is for the style build.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                See More
+              </a>
+            </div>
+          </div>
+          <div class="demo-card-square mdl-card mdl-shadow--2dp card6">
+            <div class="mdl-card__title  electricimg6 mdl-card--expand">
+              <h2 class="mdl-card__title-text">Agile Interceptor Pro 727</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              Real Quilted Maple top and double cutaway light mahogany arch top body <br>
+              Ebony fretboard with no markers. Position markers are located on the side of the neck.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                See More
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="mdl-mega-footer mdl-mega-footer--moveslider">
+        <div class="mdl-mega-footer__middle-section">
+        </div>
+        <div class="mdl-mega-footer__bottom-section">
+          <div class="mdl-logo">Title</div>
+          <ul class="mdl-mega-footer__link-list">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Privacy & Terms</a></li>
+          </ul>
+        </div>
+      </footer>
+    </body>
+  </html>
