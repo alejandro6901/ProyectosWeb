@@ -1,2 +1,2 @@
 # ProyectosWeb
-Proyectos de Web de la uTn
+Proyectos Web de la uTn
