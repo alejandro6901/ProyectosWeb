@@ -1,7 +1,12 @@
+  var position = function(x,y) {
+    this.positionX=x; 
+    this.positionY=y;
+  }
   //Ocultamos el menú al cargar la página
     $("#menu").hide();
     /* mostramos el menú si hacemos click derecho
     con el ratón */
+    var positions;
     $(document).bind("contextmenu", function(e) {
         $("#menu").css({
             'display': 'block',
@@ -9,6 +14,7 @@
             'top': e.pageY
             
         });
+        positions = new position(e.pageX,e.pageY);
         return false;
     });
     //cuando hagamos click, el menú desaparecerá
