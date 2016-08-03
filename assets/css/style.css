@@ -80,9 +80,6 @@ body {
 .pull-me p {
     text-align: center;
 }
-.container {
-  position: absolute;
-}
 .widget {
     display: flex;
     height: 100px;
@@ -128,66 +125,5 @@ body {
     justify-content: center;
     margin-top: 80px;
 }
-.cardstyle
-{
-background-color: #e9e9e9;
-border-radius: .28571429rem;
-display: flex;
-justify-content: center;
-flex-direction: column;
-text-align: center;
-width:200px;
--webkit-box-shadow: -1px 7px 19px -3px rgba(0,0,0,0.75);
--moz-box-shadow: -1px 7px 19px -3px rgba(0,0,0,0.75);
-box-shadow: -1px 7px 19px -3px rgba(0,0,0,0.75);
 
 
-}
-
-.cardheader
-{
-height: 45px;
-text-align: center;
-border-radius: .28571429rem;
-}
-.titlecard{
-      margin-top: 10px;
-}
-.cardheader:hover
-{
-
-border-radius: .28571429rem;
-}
-
-.deletecard {
-    position: absolute;
-    margin-left: 175px;
-    font-size: 15px;
-   font-family: arial, sans-serif;
-    width: 25px;
-    border-top-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-    transition: 0.4s;
-}
-.editcard {
-    position: absolute;
-  
-    font-size: 15px;
-   font-family: arial, sans-serif;
-    width: 25px;
-    border-top-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    transition: 0.4s;
-}
-.editcard:hover
-{
-background-color: green;
-cursor: pointer;
-transition: 0.4s;
-}
-.deletecard:hover
-{
-background-color: red;
-cursor: pointer;
-transition: 0.4s;
-}
