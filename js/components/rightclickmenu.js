@@ -14,7 +14,8 @@
             'top': e.pageY
             
         });
-        positions = new position(e.pageX,e.pageY);
+        
+        positions = new position(e.pageX, e.pageY);
         return false;
     });
     //cuando hagamos click, el menú desaparecerá

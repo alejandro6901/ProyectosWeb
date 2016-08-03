@@ -3,8 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Document</title>
-		<link rel="stylesheet" href="./css/semantic.css">
-		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="stylesheet" href="./assets/css/semantic.css">
+		<link rel="stylesheet" href="./assets/css/icon.css">
+		<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 	</head>
 	<body>
 		<div class="ui modal project">
@@ -20,7 +21,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="ui modal edit">
+		<div class="ui modal editmodal">
 			<div class="header">Edit Project Name</div>
 			<div class="content">
 				<div class="ui fluid icon input">
@@ -28,7 +29,7 @@
 				</div>
 				<br>
 				<div class="aligndiv">
-					<button class="ui green button editprojectclick" id="update">Update</button>
+					<button class="ui green button" id="update">Update</button>
 					<button class="ui button discardclickproject">Discard</button>
 				</div>
 			</div>
@@ -67,11 +68,11 @@
 		</div>
 		<p class="slide"><div class="pull-me">Waiting List</div></p>
 		<div class="container">
-		
 		</div>
-		<script type="text/javascript" src="./js/jquery.min.js"></script>
-		<script type="text/javascript" src="./js/semantic.js"></script>
-		<script type="text/javascript" src="./js/script.js"></script>
-		<script type="text/javascript" src="./js/rightclickmenu.js"></script>
+		<script type="text/javascript" src="./js/lib/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/lib/semantic.js"></script>
+		<script type="text/javascript" src="./js/components/projects/admin-project.js"></script>
+		<!--<script type="text/javascript" src="./js/components/script.js"></script>-->
+		<script type="text/javascript" src="./js/components/rightclickmenu.js"></script>
 	</body>
 </html>
