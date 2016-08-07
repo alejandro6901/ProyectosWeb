@@ -1,105 +1,107 @@
 $(document).ready(function() {
+    /*=================================
+    =            Events               =
+    =================================*/
+    $('.createprojectclick').click(function() {
+        createProject();
+    });
+    $('#updateproject').click(function() {
+        var id = $('#textupdateproject').attr('data-id');
+        editProject(id);
+    });
+     $('.discardclickproject').click(function() {
+         $('.project').modal('hide');
+        
+          
+    });
+    /*=================================
+    =            Functions            =
+    =================================*/
+    function createProject() {
+        var nameSelector = $('.projectname');
+        var name = nameSelector.val();
+        if (name === "") {
+            $('.projectname').attr('placeholder', 'Empty Field');
+            return;
+        }
 
-	/*=================================
-	=            Events               =
-	=================================*/
+        if (!validateName(name)) return;
 
-	$('.createprojectclick').click(function() {
-		createProject();
-	});
+        var id = ($('.cardP').length + 1).toString();
+         var card = '<div id="cardP-' + id + '" class="ui raised link card cardP ">'+
+            '<div class="content"><div class="buttonsdiv"><i class="left floated edit icon editprojectclick"></i>'
+             +'<i class="right floated remove icon deleteprojectclick"></i></div>'+
+            '<div class="header aligntext">' + name + '</div>' +
+            '' +
+            '</div><div class="extra content"><br><br></div></div>';
 
-	$('#update').click(function() {
-		var id = $('#textupdate').attr('data-id');
-		editProject(id);
-	});
+        var el = $(card).appendTo('.container');
 
-	/*=================================
-	=            Functions            =
-	=================================*/
-	
-	function createProject(){
-		var nameSelector = $('.projectname');
-		var name = nameSelector.val();
+        setPosition(el);
 
-		if (name == "") {
-			$('.projectname').attr('placeholder', 'Empty Field');
-			return;
-		}
+        setCardEvents(el);
 
-		if (!validateName(name)) return;
+        nameSelector.val('');
+        $('.project').modal('hide');
+    }
 
-		var id = ($('.card').length + 1).toString();
+    function editProject(id) {
 
-		var card = '<div id="card-'+id+'" class="ui raised link card"><div class="content">'+
-		'<div class="header">'+name+'</div><i class="right floated edit icon editprojectclick">'+
-		'</i><i class="right floated remove icon deleteprojectclick"></i>'+
-		'</div><div class="extra content"></div></div>';
+        var elem = $('#' + id);
+        var newName = $('#textupdateproject').val();
 
-		var el = $(card).appendTo('.container');
-
-		setPosition(el);
-
-		setCardEvents(el);
-
-		nameSelector.val('');
-		$('.project').modal('hide');
-	}
-
-	function editProject(id){
-		var elem = $('#'+id);
-		var newName = $('#textupdate').val();
         elem.find('div.header').text(newName);
-        $('.editmodal').modal('hide');
-	}
+        $('.editmodalproject').modal('hide');
+    }
 
-	function deleteProject(elem){
-		elem.remove();
-		resetIds();
-	}
+    function deleteProject(elem) {
+        elem.remove();
+        resetIds();
+    }
 
-	function resetIds(){
-		var id;
-		var currentId;
-		$('div[id*=card-]').map(function(key, object){
-		  id = $(object).attr('id');
-		  currentId = id.substr(id.valueOf('-') + 1);
-		  $(object).attr('id', 'card-'+id.replace(currentId, key+1));
-		});
-	}
+    function resetIds() {
+        var id;
+        var currentId;
+        $('div[id*=cardP-]').map(function(key, object) {
+            id = $(object).attr('id');
+            currentId = id.substr(id.valueOf('-') + 1);
+            $(object).attr('id', 'cardP-' + id.replace(currentId, key + 1));
+        });
+    }
 
-	function validateName(name){
-		var exist = $('.card').find('.header').filter(function(key, object){
- 			return $(object).text().indexOf(name) != -1;
-		})
+    function validateName(name) {
+        var exist = $('.cardP').find('.header').filter(function(key, object) {
+            return $(object).text().indexOf(name) != -1;
+        })
+        if (exist.length > 0) {
+            alert('Already Taken');
+            return false;
+        }
+        return true;
+    }
 
-		if (exist.length > 0) {
-			alert('Already Taken');
-			return false;
-		}
-		return true;
-	}
-
-	// funcion obtener posicion carta
+    // funcion obtener posicion carta
     function setPosition(el) {
         $(el).css({
             'position': 'absolute',
             'left': positions.positionX,
-            'top': positions.positionY  
+            'top': positions.positionY
         });
     }
 
-    function setCardEvents(el){
-    	var elem = $(el);
-    	elem.find('.editprojectclick').click(function() {
-    		var text = elem.find('div.header').text();
-    		var input = $('#textupdate');
-    		input.val(text);
-    		input.attr('data-id', elem.attr('id'));
-			$('.editmodal').modal('show');
-		});
+    function setCardEvents(el) {
+        var elem = $(el);
+        elem.find('.editprojectclick').click(function() {
+            var text = elem.find('div.header').text();
+            var input = $('#textupdateproject');
+            input.val(text);
+            input.attr('data-id', elem.attr('id'));
+            $('.editmodalproject').modal('show');
+           
+        });
 
-		elem.find('.deleteprojectclick').click(function() {
-			deleteProject(elem);
-		});
+        elem.find('.deleteprojectclick').click(function() {
+            deleteProject(elem);
+        });
     }
 });

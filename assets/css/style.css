@@ -42,8 +42,7 @@ body {
 .panel {
     background: #dbdbdb;
     background-size: 90% 90%;
-    height: 160px;
-    display: none;
+    display: none;   
     font-family: garamond, times-new-roman, serif;
 }
 .panel p {
@@ -125,5 +124,33 @@ body {
     justify-content: center;
     margin-top: 80px;
 }
-
-
+.aligntext{
+    display: flex;
+    flex-wrap: wrap;
+}
+.ui.cards > .card > .image > img, .ui.card > .image > img {
+    display: block;
+    width: 163px;
+    height: 125px;
+    border-radius: inherit;
+}
+.ui.fluid.card {
+    width: 164px;
+    /*height: 172px;*/
+    max-width: 9999px;
+}
+.panelcontainer
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+.buttonsdiv{
+    height: 20px;
+}
+.ui.cards > .card > .content > .header:not(.ui), .ui.card > .content > .header:not(.ui) {
+    /* font-weight: bold; */
+    font-size: 20px;
+    margin-top: -10px;
+    text-align: center;
+    /* line-height: 1.2857em; */
+}

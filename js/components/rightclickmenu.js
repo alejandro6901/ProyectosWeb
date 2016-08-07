@@ -41,8 +41,8 @@
                 $('.project')
                     .modal('show');
                 break;
-            case "person":
-                $('.person')
+            case "employer":
+                $('.employer')
                     .modal('show');
                 break;
         }

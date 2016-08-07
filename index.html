@@ -1,78 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Document</title>
-		<link rel="stylesheet" href="./assets/css/semantic.css">
-		<link rel="stylesheet" href="./assets/css/icon.css">
-		<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-	</head>
-	<body>
-		<div class="ui modal project">
-			<div class="header">Create New Project</div>
-			<div class="content">
-				<div class="ui fluid icon input">
-					<input type="text" placeholder="Project Name" class="projectname" required>
-				</div>
-				<br>
-				<div class="aligndiv">
-					<button class="ui green button createprojectclick">Create</button>
-					<button class="ui button discardclickproject">Discard</button>
-				</div>
-			</div>
-		</div>
-		<div class="ui modal editmodal">
-			<div class="header">Edit Project Name</div>
-			<div class="content">
-				<div class="ui fluid icon input">
-					<input type="text" placeholder="Project Name" id="textupdate" class="editprojectname" required>
-				</div>
-				<br>
-				<div class="aligndiv">
-					<button class="ui green button" id="update">Update</button>
-					<button class="ui button discardclickproject">Discard</button>
-				</div>
-			</div>
-		</div>
-		<div class="ui modal person">
-			<div class="header">Create New Person</div>
-			<div class="content">
-				<div class="ui fluid icon input ">
-					<input type="text" placeholder="Person Name" class="personname" >
-				</div>
-				<br>
-				<div class="aligndiv">
-					<button class="ui green button createpersonclick">Create</button>
-					<button class="ui button discardclickperson">
-					Discard
-					</button>
-				</div>
-			</div>
-		</div>
-		<div id="menu" class="divrightclick">
-			<ul class="ulrightclick">
-				<li id="project" class="lirightclick">Create Project</li>
-				<li id="person" class="lirightclick">Create Person</li>
-			</ul>
-		</div>
-		<div class="principalheader">
-			<!-- <div class="titleheader">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/semantic.css">
+    <link rel="stylesheet" href="./assets/css/icon.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
+
+<body>
+    <div class="ui modal project">
+        <div class="header">Create New Project</div>
+        <div class="content">
+            <div class="ui fluid icon input">
+                <input type="text" placeholder="Project Name" class="projectname" required>
+            </div>
+            <br>
+            <div class="aligndiv">
+                <button class="ui green button createprojectclick">Create</button>
+                <button class="ui button discardclickproject">Discard</button>
+            </div>
+        </div>
+    </div>
+    <div class="ui modal editmodalproject">
+        <div class="header">Edit Project Name</div>
+        <div class="content">
+            <div class="ui fluid icon input">
+                <input type="text" placeholder="Project Name" id="textupdateproject" class="editprojectname" required>
+            </div>
+            <br>
+            <div class="aligndiv">
+                <button class="ui green button" id="updateproject">Update</button>
+                <button class="ui button discardclickproject">Discard</button>
+            </div>
+        </div>
+    </div>
+       <div class="ui modal employer">
+        <div class="header">Create New Employer</div>
+        <div class="content">
+            <div class="ui fluid icon input ">
+                <input type="text" placeholder="Employer Name" class="employername">
+            </div>
+            <br>
+            <div class="aligndiv">
+                <button class="ui green button createemployerclick">Create</button>
+                <button class="ui button discardclickemployer">
+                    Discard
+                </button>
+            </div>
+        </div>
+    </div>
+      <div class="ui modal editmodalemployer">
+        <div class="header">Edit Employer Name</div>
+        <div class="content">
+            <div class="ui fluid icon input">
+                <input type="text" placeholder="Employer Name" id="textupdate" class="editemployername" required>
+            </div>
+            <br>
+            <div class="aligndiv">
+                <button class="ui green button" id="update">Update</button>
+                <button class="ui button discardclickproject">Discard</button>
+            </div>
+        </div>
+    </div>
+ 
+    <div id="menu" class="divrightclick">
+        <ul class="ulrightclick">
+            <li id="project" class="lirightclick">Create Project</li>
+            <li id="employer" class="lirightclick">Create Employer</li>
+        </ul>
+    </div>
+    <div class="principalheader">
+        <!-- <div class="titleheader">
 						proyecto
 			</div> -->
-			<div class="navheader">
-				<a class="decoration" href="#"><div class="navdivs">Import</div></a>
-				<a class="decoration" href="#"><div class="navdivs">Export</div></a>
-			</div>
-		</div>
-		<div class="panel">
-		</div>
-		<p class="slide"><div class="pull-me">Waiting List</div></p>
-		<div class="container">
-		</div>
-		<script type="text/javascript" src="./js/lib/jquery.min.js"></script>
-		<script type="text/javascript" src="./js/lib/semantic.js"></script>
-		<script type="text/javascript" src="./js/components/projects/admin-project.js"></script>
-		<!--<script type="text/javascript" src="./js/components/script.js"></script>-->
-		<script type="text/javascript" src="./js/components/rightclickmenu.js"></script>
-	</body>
+        <div class="navheader">
+            <a class="decoration" href="#">
+                <div class="navdivs">Import</div>
+            </a>
+            <a class="decoration" href="#">
+                <div class="navdivs">Export</div>
+            </a>
+        </div>
+    </div>
+    <div class="panel">
+      <div class="panelcontainer">
+      </div>
+    </div>
+    <p class="slide">
+        <div class="pull-me">Waiting List</div>
+    </p>
+    <div class="container">
+    </div>
+    <script type="text/javascript" src="./js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/lib/semantic.js"></script>
+    <!--<script type="text/javascript" src="./js/components/script.js"></script>-->
+    <script type="text/javascript" src="./js/components/rightclickmenu.js"></script>
+    <script type="text/javascript" src="./js/components/projects/admin-project.js"></script>
+    <script type="text/javascript" src="./js/components/employers/admin-employer.js"></script>
+</body>
+
 </html>

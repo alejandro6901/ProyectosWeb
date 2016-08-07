@@ -4,7 +4,7 @@
  * http://www.semantic-ui.com/
  *
  * Copyright 2014 Contributors
- * Released under the MIT license
+ * Released under the MIT 
  * http://opensource.org/licenses/MIT
  *
  */
@@ -6380,7 +6380,7 @@ i.flag.zimbabwe:before {
 ---------------*/
 
 .ui.header .sub.header {
-  display: block;
+  /*display: block;*/
   font-weight: normal;
   padding: 0em;
   margin: 0em;
@@ -18416,12 +18416,11 @@ ol.ui.horizontal.list li:before,
       Remove Gutters
 -----------------------*/
 
-.ui.grid {
-  margin-top: -1rem;
-  margin-bottom: -1rem;
-  margin-left: -1rem;
+/*.ui.grid {
+    margin-bottom: -1rem;
+ 
   margin-right: -1rem;
-}
+}*/
 
 .ui.relaxed.grid {
   margin-left: -1.5rem;
@@ -18435,10 +18434,10 @@ ol.ui.horizontal.list li:before,
 
 /* Preserve Rows Spacing on Consecutive Grids */
 
-.ui.grid + .grid {
+/*.ui.grid + .grid {
   margin-top: 1rem;
 }
-
+*/
 /*-------------------
        Columns
 --------------------*/
