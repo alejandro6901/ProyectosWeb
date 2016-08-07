@@ -4,14 +4,16 @@ $(document).ready(function() {
     =================================*/
     $('.createemployerclick').click(function() {
         createEmployer();
+
     });
     $('#updateemployer').click(function() {
         var id = $('#textupdateemployer').attr('data-id');
-        editProject(id);
+        editEmployer(id);
     });
        $('.discardclickemployer').click(function() {
          $('.employer').modal('hide');
-        
+         $('.editmodalemployer').modal('hide');
+          $('.employername').val('');
           
     });
     /*=================================
@@ -34,7 +36,7 @@ $(document).ready(function() {
         +'<i class="right floated remove icon deleteprojectclick"></i>'
         +'<i class="left floated edit icon editprojectclick"></i></div><div class="image">'
         +'<img class="imgsize" src="./assets/img/employer.png">'
-        +'</div><div class="content"><a class="header">'+name+'</a>'
+        +'</div><div class="content"><a class="header getname">'+name+'</a>'
         +'</div>'
         +'</div></div></div>';
 
@@ -47,14 +49,14 @@ $(document).ready(function() {
         $('.employer').modal('hide');
     }
 
-    function editProject(id) {
+    function editEmployer(id) {
         var elem = $('#' + id);
         var newName = $('#textupdateemployer').val();
-        elem.find('div.header').text(newName);
+        elem.find('.getname').text(newName);
         $('.editmodalemployer').modal('hide');
     }
 
-    function deleteProject(elem) {
+    function deleteEmployer(elem) {
         elem.remove();
         resetIds();
     }
@@ -83,7 +85,7 @@ $(document).ready(function() {
     function setCardEvents(el) {
         var elem = $(el);
         elem.find('.editprojectclick').click(function() {
-            var text = elem.find('div.header').text();
+            var text = elem.find('.getname').text();
             var input = $('#textupdateemployer');
             input.val(text);
             input.attr('data-id', elem.attr('id'));
@@ -91,7 +93,7 @@ $(document).ready(function() {
         });
 
         elem.find('.deleteprojectclick').click(function() {
-            deleteProject(elem);
+            deleteEmployer(elem);
         });
     }
 });

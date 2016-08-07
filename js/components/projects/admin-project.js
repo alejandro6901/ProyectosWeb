@@ -11,8 +11,8 @@ $(document).ready(function() {
     });
      $('.discardclickproject').click(function() {
          $('.project').modal('hide');
-        
-          
+         $('.editmodalproject').modal('hide');
+        $('.projectname').val('');
     });
     /*=================================
     =            Functions            =
@@ -28,8 +28,8 @@ $(document).ready(function() {
         if (!validateName(name)) return;
 
         var id = ($('.cardP').length + 1).toString();
-         var card = '<div id="cardP-' + id + '" class="ui raised link card cardP ">'+
-            '<div class="content"><div class="buttonsdiv"><i class="left floated edit icon editprojectclick"></i>'
+         var card = '<div  id="cardP-' + id + '" class="ui raised link card cardP drag ">'+
+            '<div id="drag" class="content"><div class="buttonsdiv"><i class="left floated edit icon editprojectclick"></i>'
              +'<i class="right floated remove icon deleteprojectclick"></i></div>'+
             '<div class="header aligntext">' + name + '</div>' +
             '' +
@@ -97,7 +97,7 @@ $(document).ready(function() {
             input.val(text);
             input.attr('data-id', elem.attr('id'));
             $('.editmodalproject').modal('show');
-           
+
         });
 
         elem.find('.deleteprojectclick').click(function() {
