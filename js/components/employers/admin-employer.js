@@ -7,14 +7,20 @@ $(document).ready(function() {
 
     });
     $('#updateemployer').click(function() {
-        var id = $('#textupdateemployer').attr('data-id');
-        editEmployer(id);
+        debugger
+        var inputE = $('.textupdateemployer');
+       if (inputE.val() === '') {
+         return inputE.attr('placeholder', 'Empty Field');
+    }
+      var id = inputE.attr('data-id');
+        var idClass = $('#' + id).find('.getname').text();
+        editEmployer(id, idClass);
     });
-       $('.discardclickemployer').click(function() {
-         $('.employer').modal('hide');
-         $('.editmodalemployer').modal('hide');
-          $('.employername').val('');
-          
+    $('.discardclickemployer').click(function() {
+        $('.employer').modal('hide');
+        $('.editmodalemployer').modal('hide');
+        $('.employername').val('');
+
     });
     /*=================================
     =            Functions            =
@@ -27,32 +33,49 @@ $(document).ready(function() {
             return;
         }
 
-        if (!validateName(name)) return;
+    
+        if ($('.' + name + '').length === 0) {
+            var id = ($('.cardE').length + 1).toString();
 
-        var id = ($('.cardE').length + 1).toString();
+            var employer = '<div id="cardE-' + id + '" class="ui three column grid cardE ' + name + '">'
+            + '<div class="column"><div class="ui fluid card"><div  class="buttonsdiv">'
+             + '<i class="right floated remove icon deleteprojectclick"></i>' 
+             + '<i class="left floated edit icon editprojectclick"></i></div><div class="image">' 
+             + '<img class="imgsize" src="./assets/img/employer.png">' 
+             + '</div><div class="content"><a class="header getname">' + name + '</a>'
+              + '</div></div></div></div>';
 
-            var employer = '<div id="cardE-' + id + '" class="ui three column grid cardE ">'
-            +'<div class="column"><div class="ui fluid card"><div  class="buttonsdiv">'
-            +'<i class="right floated remove icon deleteprojectclick"></i>'
-            +'<i class="left floated edit icon editprojectclick"></i></div><div class="image">'
-            +'<img class="imgsize" src="./assets/img/employer.png">'
-            +'</div><div class="content"><a class="header getname">'+name+'</a>'
-            +'</div></div></div></div>';
-
-        var el = $(employer).appendTo('.panelcontainer');
+            var el = $(employer).appendTo('.panelcontainer');
 
 
-        setCardEvents(el);
+            setCardEvents(el, name);
 
-        nameSelector.val('');
-        $('.employer').modal('hide');
+            nameSelector.val('');
+            $('.employer').modal('hide');
+        } else {
+             nameSelector.val('');
+            nameSelector.attr('placeholder', 'Already Taken');
+        }
     }
 
-    function editEmployer(id) {
+    function editEmployer(id, className) {
+   
+
         var elem = $('#' + id);
-        var newName = $('#textupdateemployer').val();
-        elem.find('.getname').text(newName);
+        var newName = $('.textupdateemployer');
+        var newNameVal = newName.val();
+        if ($('.'+newNameVal+'').length === 0) {
+    
+         elem.find('.getname').text(newNameVal);
+        $('.'+className+'').addClass(newNameVal);
+        $('.'+className+'').removeClass(className);
         $('.editmodalemployer').modal('hide');
+            
+    }else{
+        newName.val('');
+        $('.textupdateemployer').attr('placeholder', 'Already Taken');
+    }
+       
     }
 
     function deleteEmployer(elem) {
@@ -70,22 +93,12 @@ $(document).ready(function() {
         });
     }
 
-    function validateName(name) {
-        var exist = $('.cardE').find('.header').filter(function(key, object) {
-            return $(object).text().indexOf(name) != -1;
-        })
-        if (exist.length > 0) {
-            alert('Already Taken');
-            return false;
-        }
-        return true;
-    }   
 
     function setCardEvents(el) {
         var elem = $(el);
         elem.find('.editprojectclick').click(function() {
             var text = elem.find('.getname').text();
-            var input = $('#textupdateemployer');
+            var input = $('.textupdateemployer');
             input.val(text);
             input.attr('data-id', elem.attr('id'));
             $('.editmodalemployer').modal('show');

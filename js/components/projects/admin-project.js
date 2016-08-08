@@ -6,10 +6,14 @@ $(document).ready(function() {
         createProject();
     });
     $('#updateproject').click(function() {
-        var id = $('.textupdateproject').attr('data-id');
-        
+       
+        var inputP = $('.textupdateproject');
+       if (inputP.val() === '') {
+         return inputP.attr('placeholder', 'Empty Field');
+    }
+      var id = inputP.attr('data-id');
         var idClass = $('#' + id).find('.aligntext').text();
-        editProject(id,idClass);
+        editProject(id, idClass);
     });
     $('.discardclickproject').click(function() {
         $('.project').modal('hide');
@@ -41,7 +45,8 @@ $(document).ready(function() {
             setDrag(name);
             $('.project').modal('hide');
         }else{
-            alert('ya existe')
+            nameSelector.val('');
+            nameSelector.attr('placeholder', 'Already Taken');
         }
     }
 
@@ -58,7 +63,8 @@ $(document).ready(function() {
         $('.editmodalproject').modal('hide');
             
     }else{
-        alert('ya existe')
+         newName.val('');
+        $('.textupdateproject').attr('placeholder', 'Already Taken');
     }
        
        
