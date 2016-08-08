@@ -31,14 +31,13 @@ $(document).ready(function() {
 
         var id = ($('.cardE').length + 1).toString();
 
-        var employer = '<div id="cardE-' + id + '" class="ui three column grid cardE">'
-        +'<div class="column"><div class="ui fluid card"><div class="buttonsdiv">'
-        +'<i class="right floated remove icon deleteprojectclick"></i>'
-        +'<i class="left floated edit icon editprojectclick"></i></div><div class="image">'
-        +'<img class="imgsize" src="./assets/img/employer.png">'
-        +'</div><div class="content"><a class="header getname">'+name+'</a>'
-        +'</div>'
-        +'</div></div></div>';
+            var employer = '<div id="cardE-' + id + '" class="ui three column grid cardE ">'
+            +'<div class="column"><div class="ui fluid card"><div  class="buttonsdiv">'
+            +'<i class="right floated remove icon deleteprojectclick"></i>'
+            +'<i class="left floated edit icon editprojectclick"></i></div><div class="image">'
+            +'<img class="imgsize" src="./assets/img/employer.png">'
+            +'</div><div class="content"><a class="header getname">'+name+'</a>'
+            +'</div></div></div></div>';
 
         var el = $(employer).appendTo('.panelcontainer');
 

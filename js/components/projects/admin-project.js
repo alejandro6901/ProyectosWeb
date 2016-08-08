@@ -6,12 +6,14 @@ $(document).ready(function() {
         createProject();
     });
     $('#updateproject').click(function() {
-        var id = $('#textupdateproject').attr('data-id');
-        editProject(id);
+        var id = $('.textupdateproject').attr('data-id');
+        
+        var idClass = $('#' + id).find('.aligntext').text();
+        editProject(id,idClass);
     });
-     $('.discardclickproject').click(function() {
-         $('.project').modal('hide');
-         $('.editmodalproject').modal('hide');
+    $('.discardclickproject').click(function() {
+        $('.project').modal('hide');
+        $('.editmodalproject').modal('hide');
         $('.projectname').val('');
     });
     /*=================================
@@ -25,33 +27,41 @@ $(document).ready(function() {
             return;
         }
 
-        if (!validateName(name)) return;
+        if ($('.'+ name + '').length === 0) {
+            var id = ($('.cardP').length + 1).toString();
+            var card = '<div  id="cardP-' + id + '" class="ui raised link card cardP ' + name + ' ">' +
+                '<div class="content"><div class="buttonsdiv"><i class="left floated edit icon editprojectclick"></i>' + '<i class="right floated remove icon deleteprojectclick"></i></div>' +
+                '<div id="'+name+'"class="header aligntext ">' + name + '</div>' +
+                '</div><div class="extra content" "></div></div>';
 
-        var id = ($('.cardP').length + 1).toString();
-         var card = '<div  id="cardP-' + id + '" class="ui raised link card cardP drag ">'+
-            '<div id="drag" class="content"><div class="buttonsdiv"><i class="left floated edit icon editprojectclick"></i>'
-             +'<i class="right floated remove icon deleteprojectclick"></i></div>'+
-            '<div class="header aligntext">' + name + '</div>' +
-            '' +
-            '</div><div class="extra content"><br><br></div></div>';
-
-        var el = $(card).appendTo('.container');
-
-        setPosition(el);
-
-        setCardEvents(el);
-
-        nameSelector.val('');
-        $('.project').modal('hide');
+            var el = $(card).appendTo('.container');
+            setPosition(el);
+            setCardEvents(el,name);
+            nameSelector.val('');
+            setDrag(name);
+            $('.project').modal('hide');
+        }else{
+            alert('ya existe')
+        }
     }
 
-    function editProject(id) {
-
+    function editProject(id,className) {
+    
         var elem = $('#' + id);
-        var newName = $('#textupdateproject').val();
-
-        elem.find('div.header').text(newName);
+        var newName = $('.textupdateproject');
+        var newNameVal = newName.val();
+        if ($('.'+newNameVal+'').length === 0) {
+         elem.find('.aligntext').text(newNameVal);
+        elem.find('#'+className+'').text(newNameVal);
+        $('.'+className+'').addClass(newNameVal);
+        $('.'+className+'').removeClass(className);
         $('.editmodalproject').modal('hide');
+            
+    }else{
+        alert('ya existe')
+    }
+       
+       
     }
 
     function deleteProject(elem) {
@@ -68,18 +78,6 @@ $(document).ready(function() {
             $(object).attr('id', 'cardP-' + id.replace(currentId, key + 1));
         });
     }
-
-    function validateName(name) {
-        var exist = $('.cardP').find('.header').filter(function(key, object) {
-            return $(object).text().indexOf(name) != -1;
-        })
-        if (exist.length > 0) {
-            alert('Already Taken');
-            return false;
-        }
-        return true;
-    }
-
     // funcion obtener posicion carta
     function setPosition(el) {
         $(el).css({
@@ -89,11 +87,12 @@ $(document).ready(function() {
         });
     }
 
-    function setCardEvents(el) {
+    function setCardEvents(el,idcardP) {
         var elem = $(el);
         elem.find('.editprojectclick').click(function() {
-            var text = elem.find('div.header').text();
-            var input = $('#textupdateproject');
+        
+            var text = elem.find('#'+idcardP+'').text();
+            var input = $('.textupdateproject');
             input.val(text);
             input.attr('data-id', elem.attr('id'));
             $('.editmodalproject').modal('show');
