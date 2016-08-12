@@ -4,9 +4,9 @@
   }
   //Ocultamos el menú al cargar la página
     $("#menu").hide();
-    /* mostramos el menú si hacemos click derecho
-    con el ratón */
     var positions;
+  /* mostramos el menú si hacemos click derecho
+    con el ratón */
     $(document).bind("contextmenu", function(e) {
         $("#menu").css({
             'display': 'block',
@@ -18,6 +18,11 @@
         positions = new position(e.pageX, e.pageY);
         return false;
     });
+         $('#c').click(function() {
+        $('.sidebar')
+            .sidebar('toggle');
+    });
+
     //cuando hagamos click, el menú desaparecerá
     $(document).click(function(e) {
         if (e.button == 0) {
@@ -38,12 +43,14 @@
         // El switch utiliza los IDs de los <li> del menú
         switch (e.target.id) {
             case "project":
-                $('.project')
-                    .modal('show');
+             $('.createmodal').modal('show');
+              $('.modalname').text('Create New Project')
+            
                 break;
             case "employer":
-                $('.employer')
-                    .modal('show');
+               $('.createmodal').modal('show');
+              $('.modalname').text('Create New Employer')
+             
                 break;
         }
     });
