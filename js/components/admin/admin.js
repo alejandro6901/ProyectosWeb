@@ -99,7 +99,7 @@ $(document).ready(function() {
         var newName = $('.textupdate');
         var newNameVal = newName.val();
         var namespace = newNameVal.replace(/\s+/g, '');
-     
+
         var sub = id.substr(0, 6);
         if ($('.' + namespace + '').length === 0) {
             if (sub === 'cardP-') {
@@ -127,26 +127,21 @@ $(document).ready(function() {
         var idCard = $(elem).attr('id');
         var res = idCard.substr(0, 6);
         if (res === 'cardP-') {
-            
-        
             if ($('#empty').is(':empty')) {
-                alert('vacio')
-            }else{
+
+            } else {
                 resetEmployers(idCard);
             }
-            
+
         }
         elem.remove();
         resetIds(res);
     }
 
     function resetEmployers(idCard) {
-        debugger
-         $('#' + idCard + '').find('.cardE').appendTo('.panelcontainer');
-       
 
-    
-}
+        $('#' + idCard + '').find('.cardE').appendTo('.panelcontainer');
+    }
 
     function resetIds(idCard) {
         var id;
@@ -185,8 +180,6 @@ $(document).ready(function() {
                 input.attr('data-id', elem.attr('id'));
                 $('.editmodal').find('.header').text('Edit Employer')
                 $('.editmodal').modal('show');
-
-
 
             }
 
