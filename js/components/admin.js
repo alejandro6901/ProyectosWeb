@@ -12,6 +12,7 @@ $(document).ready(function() {
             return input.attr('placeholder', 'Empty Field');
         }
         var id = input.attr('data-id');
+        
         var idClass = $('#' + id).find('.getname').text();
         editCard(id, idClass);
     });
@@ -55,16 +56,11 @@ $(document).ready(function() {
         } else if ($('.modalname').text() === 'Create New Employer') {
             if ($('.' + name + '').length === 0) {
                 var id = ($('.cardE').length + 1).toString();
-
                 var employer = '<div id="cardE-' + id + '" class="ui three column grid cardE ' + name + '">' + '<div class="column"><div class="ui fluid card"><div  class="buttonsdiv">' + '<i class="right floated remove icon deletecard"></i>' + '<i class="left floated edit icon editcardclick"></i></div><div class="image">' + '<img class="imgsize" src="./assets/img/employer.png">' + '</div><div class="content"><a class="header getname">' + name + '</a>' + '</div></div></div></div>';
-
                 var el = $(employer).appendTo('.panelcontainer');
-
-
                 setCardEvents(el, name);
-
                 nameSelector.val('');
-                nameSelector.attr('placeholder', 'Name');
+               nameSelector.attr('placeholder', 'Name');
                 $('.createmodal').modal('hide');
             } else {
                 nameSelector.val('');
@@ -141,6 +137,7 @@ $(document).ready(function() {
                 input.attr('data-id', elem.attr('id'));
                 $('.editmodal').find('.header').text('Edit Project')
                 $('.editmodal').modal('show');
+                 $('.textupdate').attr('placeholder', 'Name');
 
 
             } else if (idcardVal === 'cardE') {
@@ -152,6 +149,7 @@ $(document).ready(function() {
                 input.attr('data-id', elem.attr('id'));
                 $('.editmodal').find('.header').text('Edit Employer')
                 $('.editmodal').modal('show');
+                $('.textupdate').attr('placeholder', 'Name');
 
 
 
