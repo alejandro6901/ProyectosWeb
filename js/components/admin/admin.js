@@ -12,7 +12,7 @@ $(document).ready(function() {
             return input.attr('placeholder', 'Empty Field');
         }
         var id = input.attr('data-id');
-        debugger
+
         var sub = id.substr(0, 6);
         if (sub === 'cardP-') {
             var idClass = $('#' + id).find('.getnameP').text();
@@ -49,12 +49,20 @@ $(document).ready(function() {
             if ($('.' + namespace + '').length === 0) {
                 var id = ($('.cardP').length + 1).toString();
 
-                var card = '<div  id="cardP-' + id + '" class="ui raised link card cardP ' + namespace + '">' + '<div class="content"><div class="buttonsdiv">' + '<i class="left floated edit icon editcardclick"></i>' + '<i class="right floated remove icon deletecard"></i></div>' + '<div id=' + namespace + ' class="header getnameP" >' + name + '</div>' + '</div><div id="empty" class="extra content" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>';
+                var card = '<div  id="cardP-' + id + '" class="ui raised link card cardP  ' + namespace + '">' 
+                + '<div class="content"><div class="buttonsdiv">'
+                + '<i class="left floated edit icon editcardclick"></i>'
+                + '<i class="right floated remove icon deletecard"></i></div>'
+                + '<div id=' + namespace + ' class="header getnameP" >' + name + '</div>' 
+                + '</div><div id="empty" class="extra content" ondrop="drop(event)" ondragover="allowDrop(event)">'
+                + '</div></div>';
 
-                var el = $(card).appendTo('.containerprincipal');
+                var el = $(card).appendTo('.dragcontainer');
                 setPosition(el);
                 setCardEvents(el, namespace);
-                setDrag(namespace);
+                drapP();
+
+                // setDrag(namespace);  
                 nameSelector.val('');
                 nameSelector.attr('placeholder', 'Name');
                 $('.createmodal').modal('hide');
@@ -64,11 +72,11 @@ $(document).ready(function() {
             }
 
         } else if ($('.modalname').text() === 'Create New Employer') {
-            if ($('.' + name + '').length === 0) {
+            if ($('.' + namespace + '').length === 0) {
                 var id = ($('.cardE').length + 1).toString();
 
-                var employer = '<div id="cardE-' + id + '" class="ui three column grid cardE ' + name + '" draggable="true" ondragstart="drag(event)">' + '<div class="column"><div class="ui fluid card"><div  class="buttonsdiv">' + '<i class="right floated remove icon deletecard"></i>' + '<i class="left floated edit icon editcardclick"></i></div><div class="image">' + '<img class="imgsize" src="./assets/img/employer.png">' + '</div><div class="content"><a class="header getnameE">' + name + '</a>' + '</div></div></div></div>';
-
+                var employer = '<div id="cardE-' + id + '" class="ui three column grid cardE ' + namespace + '" draggable="true" ondragstart="drag(event)">' + '<div class="column"><div class="ui fluid card"><div  class="buttonsdiv">' + '<i class="right floated remove icon deletecard"></i>' + '<i class="left floated edit icon editcardclick"></i><button>/</button></div><div class="image"></div><div class="content"><a class="header getnameE">' + name + '</a>' + '</div></div></div></div>';
+                 // ' + '<img class="imgsize" src="./assets/img/employer.png">' + '
                 var el = $(employer).appendTo('.panelcontainer');
 
 
@@ -125,15 +133,8 @@ $(document).ready(function() {
 
     function deleteCard(elem) {
         var idCard = $(elem).attr('id');
-        var res = idCard.substr(0, 6);
-        if (res === 'cardP-') {
-            if ($('#empty').is(':empty')) {
-
-            } else {
-                resetEmployers(idCard);
-            }
-
-        }
+        var res = idCard.substr(0, 6);   
+       resetEmployers(idCard);
         elem.remove();
         resetIds(res);
     }

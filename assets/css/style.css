@@ -113,7 +113,6 @@ body {
     width: 35pc;
 }
 
-
 .navdivs:hover {
     color: #ffffff;
     transition: 1s;
@@ -182,14 +181,16 @@ body {
     text-align: center;
     /* line-height: 1.2857em; */
 }
-.principal{
 
-  display: flex;
-  flex-direction: row;
-}
-.containerprincipal{
-
-height: 45pc;
+.principal {
+    display: flex;
+    flex-direction: row;
 }
 
+.containerprincipal {
+    height: 45pc;
+}
 
+.content {
+    background-color: red;
+}
