@@ -1,4 +1,4 @@
- /*
+/*
  * # Semantic UI - 2.2.2
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
@@ -25479,7 +25479,8 @@ Floated Menu / Item
 .ui.cards > .card > .extra,
 .ui.card > .extra {
   max-width: 100%;
-  min-height: 0em !important;
+  
+    min-height: 0em !important;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;

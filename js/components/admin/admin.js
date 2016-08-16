@@ -6,11 +6,12 @@ $(document).ready(function() {
         createCard();
     });
     $('.updatecard').click(function() {
-
+        var regular = /^[a-zA-Z0-9ñ\-\/]+$/;
         var input = $('.textupdate');
         if (input.val() === '') {
             return input.attr('placeholder', 'Empty Field');
         }
+        if (regular.test(input.val())) {
         var id = input.attr('data-id');
 
         var sub = id.substr(0, 6);
@@ -20,14 +21,18 @@ $(document).ready(function() {
         } else if (sub === 'cardE-') {
             var idClass = $('#' + id).find('.getnameE').text();
         }
-
-
-
+    
         editCard(id, idClass);
+       } else {
+            input.val('');
+            input.attr('placeholder', 'Invalid Name');
+        }
     });
+    load();
     $('.discardclick').click(function() {
         $('.modal').modal('hide');
         $('.inputname').val('');
+        $('.inputname').attr('placeholder', 'Name');
     });
 
     /*=================================
@@ -37,61 +42,59 @@ $(document).ready(function() {
 
         var nameSelector = $('.inputname');
         var name = nameSelector.val();
+        var regular = /^[a-zA-Z0-9ñ\-\/]+$/;
+    
         if (name === "") {
             $('.inputname').attr('placeholder', 'Empty Field');
             return;
         }
+        if (regular.test(name)) {
+            var namespace = name.replace(/\s+/g, '');
 
+            if ($('.modalname').text() === 'Create New Project') {
+                if ($('.' + namespace + '').length === 0) {
+                    var id = ($('.cardP').length + 1).toString();
 
-        var namespace = name.replace(/\s+/g, '');
+                    var card = '<div  id="cardP-' + id + '" class="ui raised link card cardP  ' + namespace + '">' + '<div class="content"><div class="buttonsdiv">' + '<i class="left floated edit icon editcardclick"></i>' + '<i class="right floated remove icon deletecard"></i></div>' + '<div id=' + namespace + ' class="header getnameP" >' + name + '</div>' + '</div><div id="empty" class="extra content" ondrop="drop(event)" ondragover="allowDrop(event)">' + '</div></div>';
 
-        if ($('.modalname').text() === 'Create New Project') {
-            if ($('.' + namespace + '').length === 0) {
-                var id = ($('.cardP').length + 1).toString();
+                    var el = $(card).appendTo('.dragcontainer');
+                    setPosition(el);
+                    setCardEvents(el);
+                    dragSelect();
+                    save(card);
+                    nameSelector.val('');
+                    nameSelector.attr('placeholder', 'Name');
+                    $('.createmodal').modal('hide');
+                } else {
+                    nameSelector.val('');
+                    nameSelector.attr('placeholder', 'Already Taken');
+                }
 
-                var card = '<div  id="cardP-' + id + '" class="ui raised link card cardP  ' + namespace + '">' 
-                + '<div class="content"><div class="buttonsdiv">'
-                + '<i class="left floated edit icon editcardclick"></i>'
-                + '<i class="right floated remove icon deletecard"></i></div>'
-                + '<div id=' + namespace + ' class="header getnameP" >' + name + '</div>' 
-                + '</div><div id="empty" class="extra content" ondrop="drop(event)" ondragover="allowDrop(event)">'
-                + '</div></div>';
+            } else if ($('.modalname').text() === 'Create New Employer') {
+                if ($('.' + namespace + '').length === 0) {
+                    var id = ($('.cardE').length + 1).toString();
 
-                var el = $(card).appendTo('.dragcontainer');
-                setPosition(el);
-                setCardEvents(el, namespace);
-                drapP();
-
-                // setDrag(namespace);  
-                nameSelector.val('');
-                nameSelector.attr('placeholder', 'Name');
-                $('.createmodal').modal('hide');
-            } else {
-                nameSelector.val('');
-                nameSelector.attr('placeholder', 'Already Taken');
+                    var employer = '<div id="cardE-' + id + '" class="ui three column grid cardE ' + namespace + '" draggable="true" ondragstart="drag(event)">' + '<div class="column"><div class="ui fluid card"><div  class="buttonsdiv">' + '<i class="right floated remove icon deletecard"></i>' + '<i class="left floated edit icon editcardclick"></i><button class="moveE"></button></div><div class="content"><a class="header getnameE">' + name + '</a>' + '</div></div></div></div>';
+                    // ' + '<img class="imgsize" src="./assets/img/employer.png">' + ' <div class="image"></div>
+                
+                     var el = $(employer).appendTo('.panelcontainer');
+                    setCardEvents(el);
+                    save(employer);
+                    nameSelector.val('');
+                    nameSelector.attr('placeholder', 'Name');
+                    $('.createmodal').modal('hide');
+                } else {
+                    nameSelector.val('');
+                    nameSelector.attr('placeholder', 'Already Taken');
+                }
             }
-
-        } else if ($('.modalname').text() === 'Create New Employer') {
-            if ($('.' + namespace + '').length === 0) {
-                var id = ($('.cardE').length + 1).toString();
-
-                var employer = '<div id="cardE-' + id + '" class="ui three column grid cardE ' + namespace + '" draggable="true" ondragstart="drag(event)">' + '<div class="column"><div class="ui fluid card"><div  class="buttonsdiv">' + '<i class="right floated remove icon deletecard"></i>' + '<i class="left floated edit icon editcardclick"></i><button>/</button></div><div class="image"></div><div class="content"><a class="header getnameE">' + name + '</a>' + '</div></div></div></div>';
-                 // ' + '<img class="imgsize" src="./assets/img/employer.png">' + '
-                var el = $(employer).appendTo('.panelcontainer');
-
-
-                setCardEvents(el, name);
-                // setdrop(name);
-                nameSelector.val('');
-                nameSelector.attr('placeholder', 'Name');
-                $('.createmodal').modal('hide');
-            } else {
-                nameSelector.val('');
-                nameSelector.attr('placeholder', 'Already Taken');
-            }
+        } else {
+            nameSelector.val('');
+            $('.inputname').attr('placeholder', 'Invalid Name');
         }
 
     }
+
     // funcion obtener posicion carta
     function setPosition(el) {
         $(el).css({
@@ -107,8 +110,9 @@ $(document).ready(function() {
         var newName = $('.textupdate');
         var newNameVal = newName.val();
         var namespace = newNameVal.replace(/\s+/g, '');
-
+      
         var sub = id.substr(0, 6);
+        
         if ($('.' + namespace + '').length === 0) {
             if (sub === 'cardP-') {
                 var get = '.getnameP';
@@ -133,8 +137,8 @@ $(document).ready(function() {
 
     function deleteCard(elem) {
         var idCard = $(elem).attr('id');
-        var res = idCard.substr(0, 6);   
-       resetEmployers(idCard);
+        var res = idCard.substr(0, 6);
+        resetEmployers(idCard);
         elem.remove();
         resetIds(res);
     }
@@ -154,7 +158,8 @@ $(document).ready(function() {
         });
     }
 
-    function setCardEvents(el, idcard) {
+    function setCardEvents(el) {
+
         var elem = $(el);
         var idcardVal = elem[0].id.substr(0, 5);
         elem.find('.editcardclick').click(function() {
@@ -162,7 +167,6 @@ $(document).ready(function() {
 
             if (idcardVal === 'cardP') {
 
-                // var text = elem.find('#' + idcard + '').text();
                 var text1 = elem.find('.getnameP').text();
                 var input = $('.textupdate');
                 input.val(text1);
@@ -189,5 +193,7 @@ $(document).ready(function() {
         elem.find('.deletecard').click(function() {
             deleteCard(elem);
         });
+         
     }
+
 });

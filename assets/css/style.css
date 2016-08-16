@@ -194,3 +194,15 @@ body {
 .content {
     background-color: red;
 }
+
+.moveE {
+    border: none;
+    height: 12px;
+    width: 13px;
+    background-color: white;
+    background-image: url(..//img/moveEm.png);
+}
+
+/*.ui.cards > .card, .ui.card {
+    width: 180px;
+   }*/
