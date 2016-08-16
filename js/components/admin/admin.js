@@ -38,6 +38,8 @@ $(document).ready(function() {
     /*=================================
     =            Functions            =
     =================================*/
+    var posX;
+    var posY;
     function createCard() {
 
         var nameSelector = $('.inputname');
@@ -61,7 +63,7 @@ $(document).ready(function() {
                     setPosition(el);
                     setCardEvents(el);
                     dragSelect();
-                    save(card);
+                    saveP(card,posX,posY);
                     nameSelector.val('');
                     nameSelector.attr('placeholder', 'Name');
                     $('.createmodal').modal('hide');
@@ -79,7 +81,7 @@ $(document).ready(function() {
                 
                      var el = $(employer).appendTo('.panelcontainer');
                     setCardEvents(el);
-                    save(employer);
+                    saveE(employer);
                     nameSelector.val('');
                     nameSelector.attr('placeholder', 'Name');
                     $('.createmodal').modal('hide');
@@ -102,7 +104,11 @@ $(document).ready(function() {
             'left': positions.positionX,
             'top': positions.positionY
         });
+            posX = positions.positionX;
+            posY = positions.positionY
+
     }
+ 
 
     function editCard(id, className) {
 
