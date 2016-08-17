@@ -34,6 +34,12 @@ $(document).ready(function() {
         $('.inputname').val('');
         $('.inputname').attr('placeholder', 'Name');
     });
+     $('.removelocal').click(function() {
+        localStorage.removeItem('saves');
+        localStorage.removeItem('pos');
+
+    });
+
 
     /*=================================
     =            Functions            =
@@ -77,7 +83,7 @@ $(document).ready(function() {
                     var id = ($('.cardE').length + 1).toString();
 
                     var employer = '<div id="cardE-' + id + '" class="ui three column grid cardE ' + namespace + '" draggable="true" ondragstart="drag(event)">' + '<div class="column"><div class="ui fluid card"><div  class="buttonsdiv">' + '<i class="right floated remove icon deletecard"></i>' + '<i class="left floated edit icon editcardclick"></i><button class="moveE"></button></div><div class="content"><a class="header getnameE">' + name + '</a>' + '</div></div></div></div>';
-                    // ' + '<img class="imgsize" src="./assets/img/employer.png">' + ' <div class="image"></div>
+                  
                 
                      var el = $(employer).appendTo('.panelcontainer');
                     setCardEvents(el);

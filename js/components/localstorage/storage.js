@@ -5,7 +5,7 @@ var local = {
 };
 
 function saveP(el,x,y) {
-    debugger
+ 
       var getX = x;
       var getY = y;
       var exist = localStorage.getItem('saves');
@@ -66,16 +66,13 @@ function load() {
         for (var i = 0; i < auxA.length; i++) {
         	
         	var atrrID = auxA[i].id.substr(0, 5);
-
-
-        
             if (atrrID === 'cardP') {
             	
             	for (j = 0; j < splitPo.length; j++) {
             		pX = splitPo[j].substr(0,3);
         	        pY = splitPo[j].substr(4,7);
         	         break;
-            	}
+            	} 
             
                 $('#containerselec').append(splitE[i]);
                 getID = $(splitE[i]).find('.cardP');
